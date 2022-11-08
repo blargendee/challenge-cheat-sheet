@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./resources/style-reset.css">
+    <link rel="stylesheet" href="./resources/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>CSS Position Reference</h1>
+    </header>
+
+    <section class="position-values">
+        <h2>Position Values</h2>
+        <table>
+            <thead>
+                <td><h3>Value</h3></td>
+                <td><h3>Description</h3></td>
+                <td><h3>Examples</h3></td>
+            </thead>
+            <tr>
+                <td class="row-header"><h4>static</h4></td>
+                <td>
+                    <p><em>Default.</em> Static positioned elements are not affected by the top, bottom, left, and right
+                        properties.</p>
+                    <p>An element with <span class="code">position: static;</span> is not positioned in any special way;
+                        it is always positioned according to the normal flow of the page.</p>
+                </td>
+                <td>
+                    <a class="example" href="#static-header">Show me</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-header"><h4>relative</h4></td>
+                <td>
+                    <p>An element with <span class="code">position: relative;</span> is positioned relative to its
+                        normal position.</p>
+                    <p>Setting the top, right, bottom, and left properties of a relatively-positioned element will cause
+                        it to be adjusted away from its normal position. Other content will not be adjusted to fit into
+                        any gap left by the element.</p>
+                </td>
+                <td><a class="example" href="#relative-header">Show me</a></td>
+            </tr>
+            <tr>
+                <td class="row-header"><h4>fixed</h4></td>
+                <td>
+                    <p>An element with <span class="code">position: fixed;</span> is positioned relative to the
+                        viewport, which means it always stays in the same place even if the page is scrolled. The top,
+                        right, bottom, and left properties are used to position the element.</p>
+                    <p>A fixed element does not leave a gap in the page where it would normally have been located.</p>
+                </td>
+                <td><a class="example" href="#fixed-header">Show me</a>
+            </tr>
+            <tr>
+                <td class="row-header"><h4>absolute</h4></td>
+                <td>
+                    <p>An element with <span class="code">position: absolute;</span> is positioned relative to the
+                        nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).</p>
+                    <p>However, if an absolute positioned element has no positioned ancestors, it uses the document
+                        body, and moves along with page scrolling.</p>
+                    <p><strong>Note:</strong> Absolute positioned elements are removed from the normal flow, and can
+                        overlap elements.</p>
+                </td>
+                <td><a class="example" href="#absolute-header">Show me</a>
+            </tr>
+            <tr>
+                <td class="row-header"><h4>sticky</h4></td>
+                <td>
+                    <p>An element with <span class="code">position: sticky;</span> is positioned based on the user's
+                        scroll position.</p>
+                    <p>A sticky element toggles between <span class="code">relative</span> and <span
+                            class="code">fixed</span>, depending on the scroll position. It is positioned relative until
+                        a given offset position is met in the viewport - then it "sticks" in place (like
+                        <span class="code">position: fixed</span>).</p>
+                </td>
+                <td><a class="example" href="#sticky-header">Show me</a>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h2>Examples</h2>
+
+        <h4 id="static-header">static</h4>
+        <div class="example-window">
+            <div class="red-box"></div>
+            <div class="green-box" id="static-green-box"></div>
+            <div class="blue-box"></div>
+            <p>The green box is part of the flow of the document and takes up space such that other objects will place themselves around it.</p>
+        </div>
+
+        <h4 id="relative-header">relative</h4>
+        <div class="example-window">
+            <div class="red-box"></div>
+            <div class="green-box" id="relative-green-box"></div>
+            <div class="blue-box"></div>
+            <p>The green box is part of the flow of the page and takes up space, but is moved <em>relative</em> to the space it would have occupied. It does not take up space in the new position, but still takes up space where it would have been placed.</p>
+        </div>
+
+        <h4 id="fixed-header">fixed</h4>
+        <p class="fixed-paragraph">The green box in the lower right corner of the screen is fixed into that position and will not move no matter how nicely you ask it to.</p>
+        <!-- <div class="example-window"> -->
+            <!-- <div class="red-box"></div> -->
+            <div class="green-box" id="fixed-green-box"></div>
+            <!-- <div class="blue-box"></div> -->
+        <!-- </div> -->
+
+        <h4 id="absolute-header">absolute</h4>
+        <div class="example-window">
+            <div class="red-box"></div>
+            <div class="green-box" id="absolute-green-box"></div>
+            <div class="blue-box"></div>
+            <p>The green box is removed from the flow of the page and placed exactly where it is told to be (in this case, it inherits its top position (relative to the viewport) from the parent container and is a small distance away from the left side of the screen). Since it's been removed from the page flow, it doesn't technically belong in the scroll window despite being a child of that element. It also does not take up space and will overlap elements if they happen to be in the way.</p>
+            <p>Try shrinking your browser window to see this effect.</p>
+        </div>
+
+        <h4 id="sticky-header">sticky</h4>
+        <div class="example-window" id="sticky-window">
+            <div class="red-box"></div>
+            <div class="green-box" id="sticky-green-box"></div>
+            <div class="blue-box"></div>
+            <p>When this window is scrolled, the green box will scroll until it reaches the top of the window, then stick in place. Try scrolling through the following paragraph.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor vulputate quam. Nam in enim sed sapien ullamcorper pellentesque eu ut justo. Maecenas fringilla est ac leo eleifend pulvinar nec ut magna. Ut tincidunt lacus ante, ut aliquam lacus gravida eu. Aenean laoreet enim sed ornare mollis. Quisque congue nisl id nulla auctor elementum. In hac habitasse platea dictumst. Nunc maximus rhoncus aliquam. In sagittis eu neque nec sodales. Nam sed massa justo. Suspendisse sit amet ullamcorper sem. Maecenas rhoncus dapibus nisl sed rutrum. Pellentesque at viverra nisi, id lobortis felis.
+
+                Aliquam sed tellus quis diam feugiat placerat vitae ut libero. Etiam quis ex finibus massa suscipit hendrerit et quis lectus. Ut urna felis, hendrerit vel ornare euismod, rhoncus vel felis. Sed ornare imperdiet hendrerit. In hac habitasse platea dictumst. Sed pharetra purus a tortor fermentum maximus. Ut tempor efficitur eros.
+                
+                Vivamus ut tellus rutrum, blandit nulla ut, bibendum massa. Integer at odio id tortor ultrices volutpat sit amet quis orci. Suspendisse potenti. Nullam tempus tortor sit amet felis faucibus aliquam. Mauris at rutrum massa, et mattis libero. Suspendisse quis ultricies magna. Praesent at nisi nulla. Aliquam porttitor aliquam sagittis. Donec non rhoncus enim, eget varius sem.
+                
+                Praesent non neque rutrum, sagittis lectus vel, egestas lectus. Nunc efficitur lacus suscipit pellentesque cursus. Donec lacinia scelerisque ultricies. Mauris dictum dui tortor, eu fermentum nunc cursus in. In hac habitasse platea dictumst. Vivamus et fermentum libero. Quisque id risus nec odio iaculis gravida quis id mauris. Aliquam et bibendum nulla. Morbi elit tellus, sollicitudin sit amet aliquet id, dictum at urna. Pellentesque efficitur, leo eget ornare finibus, lacus lectus lacinia est, vel sagittis metus ante sed lacus. Sed suscipit posuere odio sed imperdiet. Fusce congue cursus est, eu imperdiet nisi congue sit amet.
+                
+                Ut commodo tortor dolor, ut iaculis tellus blandit ac. Proin a massa laoreet, ultrices neque ut, porttitor lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In imperdiet turpis eget nibh egestas interdum. Nunc euismod libero id nisl placerat, eget ultricies massa molestie. Nam hendrerit enim in arcu vestibulum, ac venenatis lorem cursus. Fusce non feugiat lectus. Etiam quis eleifend ante. Proin ante metus, ornare nec neque vel, vestibulum dictum tellus.</p>
+        </div>
+    </section>
+</body>
+
+</html>
